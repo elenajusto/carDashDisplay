@@ -112,6 +112,11 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
+	  stateHandler(state);
+	  brakeLightControl();
+	  steeringControl();
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -270,6 +275,8 @@ static void MX_GPIO_Init(void)
 				// Debug message
 				sprintf(msg, "State 1: Manual Drive\n\r");
 				HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
+				assiControl();
+				displayControl();
 				break;
 
 			// State 2: Autonomous Mode
@@ -277,6 +284,8 @@ static void MX_GPIO_Init(void)
 				// Debug message
 				sprintf(msg, "State 2: Autonomous Mode\n\r");
 				HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
+				assiControl();
+				displayControl();
 				break;
 
 			// State 3: Inspection
@@ -284,6 +293,8 @@ static void MX_GPIO_Init(void)
 				// Debug message
 				sprintf(msg, "State 3: Inspection\n\r");
 				HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
+				assiControl();
+				displayControl();
 				break;
 
 			// State 4: Autocross
@@ -291,9 +302,10 @@ static void MX_GPIO_Init(void)
 				// Debug message
 				sprintf(msg, "State 4: Autocross\n\r");
 				HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
+				assiControl();
+				displayControl();
 				break;
 		}
-
 	}
 
 	void buttonListener(){
