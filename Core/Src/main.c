@@ -296,7 +296,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, CS_Pin|SID_Pin|SCLK_Pin|LED_GREEN_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(RST_GPIO_Port, RST_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, RST_Pin|brake_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : button4_Pin button2_Pin button1_Pin */
   GPIO_InitStruct.Pin = button4_Pin|button2_Pin|button1_Pin;
@@ -318,12 +318,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(LED_GREEN_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : RST_Pin */
-  GPIO_InitStruct.Pin = RST_Pin;
+  /*Configure GPIO pins : RST_Pin brake_Pin */
+  GPIO_InitStruct.Pin = RST_Pin|brake_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(RST_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pin : button3_Pin */
   GPIO_InitStruct.Pin = button3_Pin;
