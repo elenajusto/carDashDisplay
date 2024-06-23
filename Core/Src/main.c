@@ -117,6 +117,7 @@ int main(void)
   while (1)
   {
 
+	  buttonListener();
 	  stateHandler(state);
 	  brakeLightControl();
 	  steeringControl();
@@ -385,6 +386,25 @@ static void MX_GPIO_Init(void)
 
 	void buttonListener(){
 
+		// Button 1 is pushed
+		if (HAL_GPIO_ReadPin(button1_GPIO_Port, button1_Pin)){
+			state = 1;
+		}
+
+		// Button 2 is pushed
+		else if (HAL_GPIO_ReadPin(button2_GPIO_Port, button2_Pin)){
+			state = 2;
+		}
+
+		// Button 3 is pushed
+		else if (HAL_GPIO_ReadPin(button3_GPIO_Port, button3_Pin)){
+			state = 3;
+		}
+
+		// Button 4 is pushed
+		else if (!HAL_GPIO_ReadPin(button4_GPIO_Port, button4_Pin)){
+			state = 4;
+		}
 	}
 
 	/* Control Function Stubs */
