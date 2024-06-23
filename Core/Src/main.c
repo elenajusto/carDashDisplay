@@ -72,6 +72,10 @@ static void MX_TIM1_Init(void);
 	void assiControl();
 	void displayControl();
 
+	/* DISPLAY CONTROL PROTOTYPES */
+	void initDisplay();
+	void lcdStartAnimation();
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -101,7 +105,6 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -117,6 +120,8 @@ int main(void)
   MX_ADC1_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
+  initDisplay();
+  lcdStartAnimation();
 
   /* USER CODE END 2 */
 
@@ -487,6 +492,37 @@ static void MX_GPIO_Init(void)
 		// Debug message
 		sprintf(msg, "Display LCD command.\n\r");
 		HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
+	}
+
+	void initDisplay(){
+		delay_init();
+		ST7920_Init();
+	}
+
+	void lcdStartAnimation(){
+		ST7920_GraphicMode(1);
+		ST7920_DrawBitmap(BigLogo);
+
+		HAL_Delay(2000);
+		ST7920_Clear();
+
+		ST7920_GraphicMode(1);
+		ST7920_DrawBitmap(utsText);
+
+		HAL_Delay(2000);
+		ST7920_Clear();
+
+		ST7920_GraphicMode(1);
+		ST7920_DrawBitmap(techFest);
+
+		HAL_Delay(2000);
+		ST7920_Clear();
+
+		ST7920_GraphicMode(1);
+		ST7920_DrawBitmap(car3);
+
+		HAL_Delay(2000);
+		ST7920_Clear();
 	}
 
 /* USER CODE END 4 */
