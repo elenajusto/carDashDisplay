@@ -57,6 +57,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define button4_Pin GPIO_PIN_13
+#define button4_GPIO_Port GPIOC
 #define MCO_Pin GPIO_PIN_0
 #define MCO_GPIO_Port GPIOF
 #define CS_Pin GPIO_PIN_0
@@ -71,8 +73,14 @@ void Error_Handler(void);
 #define SCLK_GPIO_Port GPIOA
 #define LED_GREEN_Pin GPIO_PIN_5
 #define LED_GREEN_GPIO_Port GPIOA
+#define button2_Pin GPIO_PIN_4
+#define button2_GPIO_Port GPIOC
+#define button1_Pin GPIO_PIN_5
+#define button1_GPIO_Port GPIOC
 #define RST_Pin GPIO_PIN_1
 #define RST_GPIO_Port GPIOB
+#define button3_Pin GPIO_PIN_10
+#define button3_GPIO_Port GPIOA
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
