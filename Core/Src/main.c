@@ -54,7 +54,7 @@ static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 	/* USER DEFINED PROTOTYPES */
-	void stateHandler();
+	void stateHandler(int state);
 	void buttonListener();
 
 	void brakeLightControl();
@@ -68,7 +68,9 @@ static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN 0 */
 
 	/* USER DEFINED VARIABLES */
-	char msg[60];				// UART Message Buffer
+	char msg[60];		// UART Message Buffer
+
+	int state;			// State machine context
 
 /* USER CODE END 0 */
 
@@ -259,7 +261,38 @@ static void MX_GPIO_Init(void)
 
 	/* State Control Functions */
 
-	void stateHandler(){
+	void stateHandler(int state){
+
+		switch(state){
+
+			// State 1: Manual Drive
+			case 1:
+				// Debug message
+				sprintf(msg, "State 1: Manual Drive\n\r");
+				HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
+				break;
+
+			// State 2: Autonomous Mode
+			case 2:
+				// Debug message
+				sprintf(msg, "State 2: Autonomous Mode\n\r");
+				HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
+				break;
+
+			// State 3: Inspection
+			case 3:
+				// Debug message
+				sprintf(msg, "State 3: Inspection\n\r");
+				HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
+				break;
+
+			// State 4: Autocross
+			case 4:
+				// Debug message
+				sprintf(msg, "State 4: Autocross\n\r");
+				HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
+				break;
+		}
 
 	}
 
