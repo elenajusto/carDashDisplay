@@ -25,6 +25,8 @@
 #include <stdio.h>
 
 #include "ST7920LCD.h"
+#include "bitmap.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
