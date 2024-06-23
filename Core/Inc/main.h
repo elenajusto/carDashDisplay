@@ -73,6 +73,8 @@ void Error_Handler(void);
 #define SCLK_GPIO_Port GPIOA
 #define LED_GREEN_Pin GPIO_PIN_5
 #define LED_GREEN_GPIO_Port GPIOA
+#define pot_Pin GPIO_PIN_6
+#define pot_GPIO_Port GPIOA
 #define button2_Pin GPIO_PIN_4
 #define button2_GPIO_Port GPIOC
 #define button1_Pin GPIO_PIN_5
