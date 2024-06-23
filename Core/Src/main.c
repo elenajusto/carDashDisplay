@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <string.h>
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -241,6 +242,45 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+	/* USER DEFINED FUNCTIONS */
+
+	/* State Control Functions */
+
+	void stateHandler(){
+
+	}
+
+	void buttonListener(){
+
+	}
+
+	/* Control Function Stubs */
+
+	void brakeLightControl(){
+		// Debug message
+		sprintf(msg, "Brake Light command.\n\r");
+		HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
+	}
+
+
+	void steeringControl(){
+		// Debug message
+		sprintf(msg, "Steering command.\n\r");
+		HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
+	}
+
+	void assiControl(){
+		// Debug message
+		sprintf(msg, "ASSI command.\n\r");
+		HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
+	}
+
+	void displayControl(){
+		// Debug message
+		sprintf(msg, "Display LCD command.\n\r");
+		HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
+	}
 
 /* USER CODE END 4 */
 
