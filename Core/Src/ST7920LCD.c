@@ -231,56 +231,32 @@ void delay_ms(uint16_t delay)
 }
 
 /* ANIMATION FUNCTION DEFINITIONS */
-const uint8_t* FrontBitmapArray[] = {
-    Front1degLeft, Front2degLeft, Front3degLeft, Front4degLeft,
-    Front5degLeft, Front6degLeft, Front7degLeft, Front8degLeft,
-    Front9degLeft, Front10degLeft, Front11degLeft, Front12degLeft,
-    Front13degLeft, Front14degLeft, Front15degLeft, Front16degLeft,
-    Front17degLeft, Front18degLeft, Front19degLeft, Front20degLeft,
-    Front21degLeft, Front22degLeft, Front23degLeft, Front24degLeft,
-    Front25degLeft, Front26degLeft, Front27degLeft, Front28degLeft,
-    Front29degLeft, Front30degLeft, Front31degLeft, Front32degLeft,
-    Front33degLeft, Front34degLeft, Front35degLeft
+const uint8_t* fullBitmapArray[] = {
+		Front35degLeft, Front34degLeft, Front33degLeft,
+		Front32degLeft, Front31degLeft, Front30degLeft,
+		Front29degLeft, Front28degLeft, Front27degLeft,
+		Front26degLeft, Front25degLeft, Front24degLeft,
+		Front23degLeft, Front22degLeft, Front21degLeft,
+		Front20degLeft, Front19degLeft, Front18degLeft,
+		Front17degLeft, Front16degLeft, Front15degLeft,
+		Front14degLeft, Front13degLeft, Front12degLeft,
+		Front11degLeft, Front10degLeft, Front9degLeft,
+		Front8degLeft, Front7degLeft, Front6degLeft,
+		Front5degLeft, Front4degLeft, Front3degLeft,
+		Front2degLeft, Front1degLeft,
+		frontRight1, frontRight2, frontRight3, frontRight4, frontRight5,
+		frontRight6, frontRight7, frontRight8, frontRight9, frontRight10,
+		frontRight11, frontRight12, frontRight13, frontRight14, frontRight15,
+		frontRight16, frontRight17, frontRight18, frontRight19, frontRight20,
+		frontRight21, frontRight22, frontRight23, frontRight24, frontRight25,
+		frontRight26, frontRight27, frontRight28, frontRight29, frontRight30,
+		frontRight31, frontRight32, frontRight33, frontRight34, frontRight35
 };
 
-const uint8_t* rightAnimations[] = {
-    frontRight1, frontRight2, frontRight3, frontRight4, frontRight5,
-    frontRight6, frontRight7, frontRight8, frontRight9, frontRight10,
-    frontRight11, frontRight12, frontRight13, frontRight14, frontRight15,
-    frontRight16, frontRight17, frontRight18, frontRight19, frontRight20,
-    frontRight21, frontRight22, frontRight23, frontRight24, frontRight25,
-    frontRight26, frontRight27, frontRight28, frontRight29, frontRight30,
-    frontRight31, frontRight32, frontRight33, frontRight34, frontRight35
-};
-
-void DrawLeftBitmapsInLoop(void) {
-    int i;
+void drawSteerAngle(int angle){
+	ST7920_Clear();
     ST7920_GraphicMode(1);
-
-    // Loop to count up from 1 to 35
-    for (i = 0; i < 35; i++) {
-        ST7920_DrawBitmap(FrontBitmapArray[i]);
-    }
-
-    // Loop to count down from 35 to 1
-    for (i = 34; i >= 0; i--) {
-        ST7920_DrawBitmap(FrontBitmapArray[i]);
-    }
-}
-
-void DrawRightAnimationsInLoop(void) {
-    int i;
-    ST7920_GraphicMode(1);
-
-    // Loop to count up from 1 to 35
-    for (i = 0; i < 35; i++) {
-        ST7920_DrawBitmap(rightAnimations[i]);
-    }
-
-    // Loop to count down from 35 to 0
-    for (i = 34; i >= 0; i--) {
-        ST7920_DrawBitmap(rightAnimations[i]);
-    }
+    ST7920_DrawBitmap(fullBitmapArray[angle]);
 }
 
 /* STATE DISPLAY FUNCTIONS */

@@ -78,7 +78,7 @@ static void MX_TIM1_Init(void);
 	/* DISPLAY CONTROL PROTOTYPES */
 	void initDisplay();
 	void lcdStartAnimation();
-
+	void debugSteer();
 
 /* USER CODE END PFP */
 
@@ -140,6 +140,8 @@ int main(void)
 
 	  sprintf(msg, "ADC: %d\r\n", getAdcFromPot());
 	  HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
+
+	  debugSteer();
 
     /* USER CODE END WHILE */
 
@@ -543,6 +545,18 @@ static void MX_GPIO_Init(void)
 		HAL_ADC_PollForConversion(&hadc1, 5);
 		potValue = HAL_ADC_GetValue(&hadc1);
 		return potValue;
+	}
+
+
+	/* STEERING ANIMATION FUNCTION */
+	void debugSteer(){
+		int steerDebug = myMap(getAdcFromPot(), 4095, 500, 1, 69);
+
+		sprintf(msg, "Steer: %d.\n\r", steerDebug);
+		HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
+
+		drawSteerAngle(steerDebug);
+
 	}
 
 /* USER CODE END 4 */

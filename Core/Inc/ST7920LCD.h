@@ -13,8 +13,7 @@
 
 extern uint8_t image[(128 * 64)/8];
 
-extern const uint8_t* FrontBitmapArray[];
-extern const uint8_t* rightAnimations[];
+extern const uint8_t* fullBitmapArray[];
 
 /* LCD CONTROL FUNTCION PROTOTYPES */
 
@@ -50,9 +49,7 @@ void delay_ms(uint16_t delay);
 
 
 /* ANIMATION PROTOTYPES */
-void DrawLeftBitmapsInLoop(void);
-
-void DrawRightAnimationsInLoop(void);
+void drawSteerAngle(int angle);
 
 /* STATE DISPLAY PROTOTYPES */
 void stateOne();

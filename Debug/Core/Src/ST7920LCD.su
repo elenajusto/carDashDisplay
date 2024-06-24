@@ -10,9 +10,8 @@
 ../Core/Src/ST7920LCD.c:217:6:delay_init	8	static
 ../Core/Src/ST7920LCD.c:222:6:delay_us	16	static
 ../Core/Src/ST7920LCD.c:228:6:delay_ms	16	static
-../Core/Src/ST7920LCD.c:256:6:DrawLeftBitmapsInLoop	16	static
-../Core/Src/ST7920LCD.c:271:6:DrawRightAnimationsInLoop	16	static
-../Core/Src/ST7920LCD.c:287:6:stateOne	8	static
-../Core/Src/ST7920LCD.c:297:6:stateTwo	8	static
-../Core/Src/ST7920LCD.c:308:6:stateThree	8	static
-../Core/Src/ST7920LCD.c:319:6:stateFour	8	static
+../Core/Src/ST7920LCD.c:256:6:drawSteerAngle	16	static
+../Core/Src/ST7920LCD.c:263:6:stateOne	8	static
+../Core/Src/ST7920LCD.c:273:6:stateTwo	8	static
+../Core/Src/ST7920LCD.c:284:6:stateThree	8	static
+../Core/Src/ST7920LCD.c:295:6:stateFour	8	static
