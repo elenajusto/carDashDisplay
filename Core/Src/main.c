@@ -137,8 +137,9 @@ int main(void)
 
 	  buttonListener();
 	  stateHandler(state);
-	  brakeLightControl();
-	  steeringControl();
+
+	  sprintf(msg, "ADC: %d\r\n", getAdcFromPot());
+	  HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
 
     /* USER CODE END WHILE */
 
@@ -416,7 +417,6 @@ static void MX_GPIO_Init(void)
 				// Debug message
 				sprintf(msg, "State 1: Manual Drive\n\r");
 				HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
-				assiControl();
 				stateOne();
 				break;
 
@@ -425,7 +425,6 @@ static void MX_GPIO_Init(void)
 				// Debug message
 				sprintf(msg, "State 2: Autonomous Mode\n\r");
 				HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
-				assiControl();
 				stateTwo();
 				break;
 
@@ -434,7 +433,6 @@ static void MX_GPIO_Init(void)
 				// Debug message
 				sprintf(msg, "State 3: Inspection\n\r");
 				HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
-				assiControl();
 				stateThree();
 				break;
 
@@ -443,7 +441,6 @@ static void MX_GPIO_Init(void)
 				// Debug message
 				sprintf(msg, "State 4: Autocross\n\r");
 				HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
-				assiControl();
 				stateFour();
 				break;
 		}
@@ -534,14 +531,14 @@ static void MX_GPIO_Init(void)
 		ST7920_Clear();
 	}
 
-	/* Mapping function */
+	/* ADC FUNCTIONS */
+
 	int myMap(int x, int in_min, int in_max, int out_min, int out_max){
 		return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 	}
 
-	/* getADC from Pot */
 	int getAdcFromPot(){
-		/* Get pot value */
+		HAL_ADC_Start_IT(&hadc1);
 		uint16_t potValue;
 		HAL_ADC_PollForConversion(&hadc1, 5);
 		potValue = HAL_ADC_GetValue(&hadc1);
