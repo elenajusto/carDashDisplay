@@ -72,9 +72,13 @@ static void MX_TIM1_Init(void);
 	void assiControl();
 	void displayControl();
 
+	int myMap(int x, int in_min, int in_max, int out_min, int out_max);
+	int getAdcFromPot();
+
 	/* DISPLAY CONTROL PROTOTYPES */
 	void initDisplay();
 	void lcdStartAnimation();
+
 
 /* USER CODE END PFP */
 
@@ -120,6 +124,7 @@ int main(void)
   MX_ADC1_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
+
   initDisplay();
   lcdStartAnimation();
 
@@ -431,6 +436,9 @@ static void MX_GPIO_Init(void)
 				HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
 				assiControl();
 				displayControl();
+
+				DrawLeftBitmapsInLoop();
+				DrawRightAnimationsInLoop();
 				break;
 
 			// State 4: Autocross
@@ -467,6 +475,7 @@ static void MX_GPIO_Init(void)
 		}
 	}
 
+
 	/* Control Function Stubs */
 
 	void brakeLightControl(){
@@ -493,6 +502,9 @@ static void MX_GPIO_Init(void)
 		sprintf(msg, "Display LCD command.\n\r");
 		HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg), HAL_MAX_DELAY);
 	}
+
+
+	/* LCD CONTROL FUNCTIONS */
 
 	void initDisplay(){
 		delay_init();
@@ -523,6 +535,20 @@ static void MX_GPIO_Init(void)
 
 		HAL_Delay(2000);
 		ST7920_Clear();
+	}
+
+	/* Mapping function */
+	int myMap(int x, int in_min, int in_max, int out_min, int out_max){
+		return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+	}
+
+	/* getADC from Pot */
+	int getAdcFromPot(){
+		/* Get pot value */
+		uint16_t potValue;
+		HAL_ADC_PollForConversion(&hadc1, 5);
+		potValue = HAL_ADC_GetValue(&hadc1);
+		return potValue;
 	}
 
 /* USER CODE END 4 */
