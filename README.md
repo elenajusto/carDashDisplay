@@ -1,4 +1,14 @@
-﻿# carDashDisplay
+﻿# Car Dash Display
+This firmware is for the UTS Motorsports Autonomous (UTSMA) Team's prototype vehicle. It is intended to run on the front steering motor controller where the state machine, steering, autonomous state indicator (ASSI), brake light and LCD display code is also stored.
+
+This repository demonstrates the state machine and LCD on an STM32 NUCLEO-G071RB. 
+
+## Features
+<ul>
+  <li>A welcome animation featuring the UTSMA logo, the UTS logo and the Tech Fest logo.</li>
+  <li>Steering animations mapped to potentiometer input.</li>
+  <li>Display menus for State 1, State 2, State 3 and State 4.</li>
+</ul>
 
 ## Wiring Diagram
 ![Wiring](https://github.com/elenajusto/carDashDisplay/assets/56148816/bf16e0ae-192b-4e1a-9b41-de94166cb436)
