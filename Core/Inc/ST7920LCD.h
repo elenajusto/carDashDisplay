@@ -54,4 +54,10 @@ void DrawLeftBitmapsInLoop(void);
 
 void DrawRightAnimationsInLoop(void);
 
+/* STATE DISPLAY PROTOTYPES */
+void stateOne();
+void stateTwo();
+void stateThree();
+void stateFour();
+
 #endif /* INC_ST7920LCD_H_ */

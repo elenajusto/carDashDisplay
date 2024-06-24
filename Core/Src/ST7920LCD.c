@@ -282,3 +282,46 @@ void DrawRightAnimationsInLoop(void) {
         ST7920_DrawBitmap(rightAnimations[i]);
     }
 }
+
+/* STATE DISPLAY FUNCTIONS */
+void stateOne(){
+	ST7920_Clear();
+	ST7920_GraphicMode(0);
+
+	ST7920_SendString(0,0, "State 1");
+	ST7920_SendString(1,0, "Mode:");
+	ST7920_SendString(2,0, "Manual Drive");
+	//ST7920_SendString(3,0, "Auto: ON/OFF");
+}
+
+void stateTwo(){
+	ST7920_Clear();
+	ST7920_GraphicMode(0);
+
+	ST7920_SendString(0,0, "State 2");
+	ST7920_SendString(1,0, "Mode:");
+	ST7920_SendString(2,0, "Autonomous Mode");
+	//ST7920_SendString(3,0, "Auto: ON/OFF");
+}
+
+
+void stateThree(){
+	ST7920_Clear();
+	ST7920_GraphicMode(0);
+
+	ST7920_SendString(0,0, "State 3");
+	ST7920_SendString(1,0, "Mode");
+	ST7920_SendString(2,0, "Inspection");
+	//ST7920_SendString(3,0, "Auto: ON/OFF");
+}
+
+
+void stateFour(){
+	ST7920_Clear();
+	ST7920_GraphicMode(0);
+
+	ST7920_SendString(0,0, "State 4");
+	ST7920_SendString(1,0, "Mode:");
+	ST7920_SendString(2,0, "Autocross");
+	//ST7920_SendString(3,0, "Auto: ON/OFF");
+}
